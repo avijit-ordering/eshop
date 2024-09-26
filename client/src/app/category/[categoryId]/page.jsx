@@ -158,7 +158,7 @@ const Listing = ({ params }) => {
                         <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating} isOpenFilter={isOpenFilter} catId={params.categoryId} subCatId={params.subcatid} catData={context.categoryData}/>
                     }
 
-                        <div className="content_right">
+                        <div className="content_right" style={{width: isOpenFilterPanel ? '78%' : '100%'}}>
 
                             <div className="showBy mt-0 mb-3 d-flex align-items-center">
                                 <div className="d-flex align-items-center btnWrapper">
