@@ -23,16 +23,23 @@ import { IoIosSearch } from "react-icons/io";
 import { FaAngleLeft } from "react-icons/fa6";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation'
+import { i18n } from '../../../i18n'
 
-const Header = () => {
+const Header = (props) => {
+ 
   const [anchorEl, setAnchorEl] = useState(null);
   const [isOpenNav, setIsOpenNav] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
+  const [selectedLang, setselectedLang] = useState('');
+
   const open = Boolean(anchorEl);
 
   const headerRef = useRef();
   const context = useContext(MyContext);
   const history = useRouter();
+  const pathName = usePathname()
+
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -61,6 +68,17 @@ const Header = () => {
       }
     });
   }, []);
+
+  const selectChange = (e) => {
+    const locale = e.target.value
+
+    const segments = pathName.split('/')
+    segments[1] = locale
+    history.push(segments.join('/'));
+    setselectedLang(locale)
+    //return segments.join('/')
+
+  };
 
   const openNav = () => {
     setIsOpenNav(!isOpenNav);
@@ -137,7 +155,7 @@ const Header = () => {
                     {context.isLogin !== true && context.windowWidth > 992 && (
                       <Link href="/signIn">
                         <Button className="btn-blue btn-round mr-3">
-                          Sign In
+                          {props.t.signin}
                         </Button>
                       </Link>
                     )}
@@ -234,6 +252,18 @@ const Header = () => {
                           <IoMdMenu />
                         </Button>
                       )}
+
+
+                          <select onChange={(e) => selectChange(e)} defaultValue={props.params.lang}>
+                            {i18n.locales.map(locale => (
+                              <option key={locale} value={locale} selected>
+
+
+                                <div style={{ color: 'red' }}>{locale}</div>
+
+                              </option>
+                            ))}
+                          </select>
                     </div>
                   </div>
                 </div>

@@ -180,7 +180,7 @@ const Navigation = (props) => {
 
                 {
                   context.windowWidth < 992 && (
-                    <span className={`arrow ${isOpenSubMenuIndex === index &&
+                    <span className={`arrow ${
                       isOpenSubMenu_ === true &&
                       "rotate"
                       }`}
