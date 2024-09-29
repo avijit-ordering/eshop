@@ -12,7 +12,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import { initializeApp } from "firebase/app";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { firebaseApp } from "../firebase";
+import { firebaseApp } from "../[lang]/firebase";
 import Image from "next/image";
 import Link from "next/link";
 

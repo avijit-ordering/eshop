@@ -12,7 +12,7 @@ import { postData } from "@/utils/api";
 
 
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { firebaseApp } from "../firebase";
+import { firebaseApp } from "../[lang]/firebase";
 import Link from "next/link";
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
